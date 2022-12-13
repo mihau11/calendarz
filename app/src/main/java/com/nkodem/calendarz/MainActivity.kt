@@ -9,17 +9,24 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 fun por(d1:String,d2:String):Int {
-    var startDateValue = Date(d1)
-    var endDateValue = Date(d2)
+    var dz1=d1.split('/')[0].toInt()
+    var ms1=d1.split('/')[1].toInt()
+    var rk1=d1.split('/')[2].toInt()
+    var dz2=d2.split('/')[0].toInt()
+    var ms2=d2.split('/')[1].toInt()
+    var rk2=d2.split('/')[2].toInt()
+    var tab = arrayOf(0,31,28,31,30,31,30,31,31,30,31,30,31)
+    for (i in 0..ms1-1){
+        dz1=dz1+tab[i]
+    }
+    for (i in 0..ms2-1){
+        dz2=dz2+tab[i]
+    }
+    dz1=dz1+((rk1-2021)*365)
+    dz2=dz2+((rk2-2021)*365)
+    var odp = dz2-dz1
 
-    val mdiff=kotlin.math.abs(startDateValue.time-endDateValue.time)
-    val mdiffdates=mdiff/(24*3600)
-    val diff: Long = endDateValue.getTime() - startDateValue.getTime()
-    val seconds = diff / 1000
-    val minutes = seconds / 60
-    val hours = minutes / 60
-    val days = hours / 24 + 1
-    return(mdiffdates.toInt())
+    return(odp)
 }
 class MainActivity : AppCompatActivity() {
     var dod: String = Date().toString()
@@ -34,37 +41,15 @@ class MainActivity : AppCompatActivity() {
         val sdf = SimpleDateFormat("dd/MM/yyyy")
         cod.setOnDateChangeListener { view, year, month, dayOfMonth ->
             var mies=month+1
-            if (mies>9&&dayOfMonth>9) {
-                dod = "$dayOfMonth/$mies/$year"
-            }
-            else if (mies>9){
-                dod = "0$dayOfMonth/$mies/$year"
-            }
-            else if(dayOfMonth>9){
-                dod="$dayOfMonth/0$mies/$year"
-            }
-            else{
-                dod="0$dayOfMonth/0$mies/$year"
-            }
+            dod = "$dayOfMonth/$mies/$year"
         }
         cdo.setOnDateChangeListener { view, year, month, dayOfMonth ->
             var mies=month+1
-            if (mies>9&&dayOfMonth>9) {
-                ddo = "$dayOfMonth/$mies/$year"
-            }
-            else if (mies>9){
-                ddo = "0$dayOfMonth/$mies/$year"
-            }
-            else if(dayOfMonth>9){
-                ddo="$dayOfMonth/0$mies/$year"
-            }
-            else{
-                ddo="0$dayOfMonth/0$mies/$year"
-            }
+            ddo = "$dayOfMonth/$mies/$year"
         }
         guzik.setOnClickListener {
-            if(por(dod,ddo)>0 && por(sdf.format(cod.date),dod)>0) {
-                label.setText("Przyjazd: $dod\nWyjazd: $ddo\nWyciaczka trwa ${ddo.compareTo(dod)+1} dni")
+            if(por(dod,ddo)>=0 && por(sdf.format(cod.date),dod)>0) {
+                label.setText("Przyjazd: $dod\nWyjazd: $ddo\nWyciaczka trwa ${por(dod,ddo)} dni")
             }
             else{
                 label.setText("Źle wybrana data!")
