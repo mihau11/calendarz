@@ -39,6 +39,9 @@ class MainActivity : AppCompatActivity() {
         val cdo = findViewById<CalendarView>(R.id.calDo)
         val label = findViewById<TextView>(R.id.textView)
         val sdf = SimpleDateFormat("dd/MM/yyyy")
+        val dzis = sdf.format(Date())
+        dod=dzis
+        ddo=dod
         cod.setOnDateChangeListener { view, year, month, dayOfMonth ->
             var mies=month+1
             dod = "$dayOfMonth/$mies/$year"
@@ -48,12 +51,14 @@ class MainActivity : AppCompatActivity() {
             ddo = "$dayOfMonth/$mies/$year"
         }
         guzik.setOnClickListener {
-            if(por(dod,ddo)>=0 && por(sdf.format(cod.date),dod)>0) {
-                label.setText("Przyjazd: $dod\nWyjazd: $ddo\nWyciaczka trwa ${por(dod,ddo)} dni")
+            val prr = por(dod,ddo)
+            if(prr>=0 && por(dzis,dod)>=0&&prr<2*365) {
+                label.setText("Przyjazd: $dod\nWyjazd: $ddo\nWyciaczka trwa ${prr+1} dni")
             }
             else{
                 label.setText("Źle wybrana data!")
             }
+
 
         }
     }
