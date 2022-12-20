@@ -58,8 +58,9 @@ class MainActivity : AppCompatActivity() {
             else{
                 label.setText("Źle wybrana data!")
             }
-
-
+        }
+        findViewById<Button>(R.id.exit).setOnClickListener {
+            finish()
         }
     }
 }
