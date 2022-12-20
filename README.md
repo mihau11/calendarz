@@ -1,5 +1,2 @@
 # calendarz
-Aplikacja po uruchomieniu jest gotowa do użycia. Ukazują się nam dwa widgety calndarView z zaznaczoną dzisiejszą datą.
-Po klikniciu guzika z napisem SPRAWDŹ w polu tekstowym poniżej wyświetlą nam się obie zaznaczone daty i ilość dni pomiędzy nimi.
-Zaznaczenie daty przyjazdu w przeszłości, przyjazdu po wyjeździe lub wybranie wycieczki trwającej ponad dwa lata spowoduje wyświetlenie napisu "Źle wybrana data".
-Aplikacja nie przechowywuje historii poprzednich wyszukań. Po ukryciu i wybraniu aplikacji ponownie przywita nas stan z ostatniej sesji. Po ponownym uruchomieniu aplikacja wyglądać będzie zawsze tak samo, z napisem "Witaj" w polu tekstowym.
+Aplikacja po uruchomieniu jest gotowa do użycia. Ukazują się nam dwa widgety calndarView z zaznaczoną dzisiejszą datą, 2 buttony i 3 pola textView.Kliknięcie guzika z napisem SPRAWDŹ = w polu tekstowym poniżej wyświetlą się obie zaznaczone daty i ilość dni pomiędzy nimi. Zaznaczenie daty przyjazdu w przeszłości, przyjazdu po wyjeździe lub wybranie wycieczki trwającej ponad dwa lata = wyświetlenie napisu "Źle wybrana data". Aplikacja nie przechowywuje historii poprzednich wyszukań.Kliknięcie guzika "X" lub ukrycie i wybranie aplikacji ponownie = aplikacja od nowa. Ponowne uruchomienie =  aplikacja od nowa (daty dzisiejsze i textView = 'Witaj'
